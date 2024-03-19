@@ -20,6 +20,7 @@ def cleanup_memojito(context):
     portal = api.portal.get()
     catalog.ZopeFindAndApply(
         portal,
+        search_sub=True,
         apply_func=cleanup_memojito_on_object,
         apply_path="/".join(portal.getPhysicalPath()),
     )
@@ -29,3 +30,4 @@ def to_1001(context):
     setup_tool = api.portal.get_tool(name="portal_setup")
     setup_tool.runImportStepFromProfile(default_profile, "toolset")
     cleanup_memojito(context)
+
